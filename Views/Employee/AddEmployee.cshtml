@@ -1,0 +1,68 @@
+﻿@model DomingoRoofworksApp.Models.EmployeeModel
+
+@{
+    ViewBag.Title = "Add Employee";
+}
+@if (ViewBag.Bool == true)
+{
+    <div class="alert alert-success" role="alert" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert">
+            x
+        </button>
+        Employee was added successfully
+    </div>
+}
+else if(ViewBag.Bool == false)
+{
+<div class="alert alert-danger" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+    <button type="button" class="close" data-dismiss="alert">
+        x
+    </button>
+    Employee could not be added, please try again later
+</div>
+}
+<div class="container text-center mt-5">
+    <h2>Add Employee</h2>
+</div>
+
+<div class="container">
+    <div class="container mt-5" style="margin-left:350px;">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <h4>Please enter the employee's details</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-outline-dark" />
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to menu", "Index", new { @class = "btn btn-outline-secondary" })
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

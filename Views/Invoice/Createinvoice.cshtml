@@ -1,0 +1,102 @@
+﻿@model IEnumerable<DomingoRoofworksApp.Models.InvoiceModel>
+
+
+@if (ViewBag.Bool == false)
+{
+<div class="alert alert-danger" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+    <button type="button" class="close" data-dismiss="alert">
+        x
+    </button>
+    @ViewBag.Message
+</div>
+}
+
+<div class="text-center display-4 mt-5">
+    <h2>Create invoice</h2>
+</div>
+
+<div class="container-fluid mt-5">
+    @using (Html.BeginForm("CreateInvoice", "Invoice", FormMethod.Get))
+    {
+
+        <div class="container">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="rate">Please enter the rate</label>
+                        @Html.DropDownList("type", new List<SelectListItem>
+                                            { new SelectListItem { Value = "JOB01", Text = "Full Conversion" },
+                                             new SelectListItem { Value = "JOB02" , Text = "Semi Conversion" },
+                                             new SelectListItem { Value = "JOB03" , Text = "Floor Boarding" }}, new { @class = "form-control" })
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="nume_days">Please enter the number of days</label>
+                        @Html.TextBox("num_days", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="cust_id">Please enter the customer ID</label>
+                        @Html.TextBox("cust_id", null, new { @class = "form-control" })
+
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="job_id">Please enter the Job card No</label>
+                        @Html.TextBox("job_id", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <input type="submit" value="Search" class="btn btn-outline-info btn-lg btn-block mt-5" />
+            </form>
+        </div>
+    }
+</div>
+
+<div class="container">
+    <table class="table table-bordered mt-5">
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Invoice No</th>
+                <th>Customer ID</th>
+                <th>Job Card No</th>
+                <th>Rate</th>
+                <th>Number of days</th>
+                <th>Subtotal(Excluding VAT)</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="3" style="color:red;">
+                        Enter value to generate an invoice
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.cust_id</td>
+                        <td>@item.job_card_id</td>
+                        <td>@item.rate</td>
+                        <td>@item.num_days</td>
+                        <td>R @item.subtotal</td>
+                        <td>R @item.total</td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>

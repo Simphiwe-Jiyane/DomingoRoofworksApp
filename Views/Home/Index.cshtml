@@ -1,0 +1,37 @@
+﻿
+
+@{
+    ViewBag.Title = "Home Page";
+    ViewBag.HomeActive = "active";
+    ViewBag.JobActive = "";
+    ViewBag.InvoiceActive = "";
+    ViewBag.EmpActive = "";
+}
+
+    <div class="my-Container">
+        <div class="container text-center">
+            <div></div>
+            <div></div>
+            <h2 class="lead">Welcome to the Domingo Roof works interface</h2>
+        </div>
+    </div>
+
+    <div class="container mt-5 text-center lead">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h2 style="color:#9932cc">Create a new job</h2>
+                <p>No more manually creating jobs cards. Use the new system to easily create jobs and assign one to an employee </p>
+                   @Html.ActionLink("Create job", "Newjob", "JobCard", new { area = "" }, new { @class="btn my-btn " })
+                </div>
+            <div class="col-md-4 mb-4">
+                <h2 style="color:#9932cc">Update an employee</h2>
+                <p>Need to change an employee's name? No problem, easily update an existing employee's details</p>
+                @Html.ActionLink("Update", "UpdateEmployee", "Employee" ,new { area = "" } ,new { @class = "btn my-btn" })
+            </div>
+            <div class="col-md-4 mb-4">
+                <h2 style="color:#9932cc">Generate invoices</h2>
+                <p>When the job is complete easily generate an invoice and email it to the happy client</p>
+                @Html.ActionLink("Create", "CreateInvoice", "Invoice", new { area = "" }, new { @class = "btn my-btn mt-4" })
+            </div>
+            </div>
+        </div>  

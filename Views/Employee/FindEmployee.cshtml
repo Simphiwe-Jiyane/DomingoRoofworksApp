@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DomingoRoofworksApp.Models.EmployeeModel>
+
+@{
+    ViewBag.Title = "Find Employee";
+}
+<div class="container text-center mt-5">
+    <h2 class="display-4">Find an Employee</h2>
+</div>
+
+
+<div class="container-fluid mt-5" style="padding-left:500px;">
+    @using (Html.BeginForm("FindEmployee", "Employee", FormMethod.Get))
+    {
+
+        <div class="form-group">
+            <label class="lead" for="searching">Enter the employee number to find an employee</label>
+            <div class="input-group mb-5">
+                @Html.TextBox("searching", null, new { @class = "form-control" })
+                <div class="input-group-append">
+                    <input type="submit" value="Search" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+<div class="container">
+    <table class="table table-bordered mt-5">
+
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>First name</th>
+                <th>Surname</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                if (item == null)
+                {
+                    <tr>
+                        <td colspan="3" style="color:red;">
+                            No employee found
+                        </td>
+                    </tr>
+                    break;
+                }
+                else
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.firstName</td>
+                        <td>@item.lastname</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

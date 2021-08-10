@@ -1,0 +1,69 @@
+﻿
+body {
+    margin: 0;
+    padding:0;
+    padding-bottom: 20px;
+}
+
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select{
+    max-width: 280px;
+}
+
+.navbar-brand {
+    font-size: 35px !important;
+    font-family: 'Dancing Script', cursive !important;
+    color: #9932cc !important;
+}
+
+.nav-link{
+    font-size: 18px; !important;
+    color: black !important;
+    transition:ease-in-out 0.3s;
+}
+
+.nav-link:hover {
+    color: #9932cc !important;
+}
+
+.active .nav-link {
+    color: #9932cc !important;
+}
+
+.my-Container {
+    background: url('../images/city-spain-dense-17658.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    margin: 0;
+}
+
+.my-Container h2 {
+    font-size: 45px;
+    color: #9932cc;
+    padding-top:50px;
+}
+
+.my-btn {
+    color: #9932cc;
+    background-color: white;
+    border: 1px solid #9932cc;
+    border-radius: 5px;
+    width: 100px;
+    transition: ease-out 0.3s;
+}
+
+.my-btn:hover {
+    background-color: #9932cc;
+    color:white;
+}

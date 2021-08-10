@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Job Cards";
+    ViewBag.HomeActive = "";
+    ViewBag.JobActive = "active";
+    ViewBag.InvoiceActive = "";
+    ViewBag.EmpActive = "";
+}
+
+    <div class="container rounded " style="margin-top:100px; border:1px solid #9932cc; height:300px;">
+
+        <div class="container">
+            <div class="row mt-5 mb-5 ml-5" style="margin-top:40px;">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Create a new Job Card</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Create", "NewJob", "Jobcard", new { @class = "btn my-btn "})
+                </div>
+            </div>
+            <div class="row mt-5 mb-5 ml-5">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Search for an existing Job Card</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Search", "Getjob", "Jobcard", new { @class = "btn my-btn" })
+                </div>
+            </div>
+            <div class="row mt-5 mb-5 ml-5">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Update a Job Type rate</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Update", "Index", "JobType", new { area = ""},new { @class = "btn my-btn "})
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DomingoRoofworksApp.Models.JobCardModel>
+
+@{
+    ViewBag.Title = "Getjob";
+}
+
+<div class="container text-center mt-5">
+    <h2 class="display-4">Find a jobcard</h2>
+</div>
+
+
+<div class="container-fluid mt-5" style="padding-left:500px;">
+    @using (Html.BeginForm("GetJob", "JobCard", FormMethod.Get))
+    {
+        <div class="input-group mb-5">
+            @Html.TextBox("j_id", null, new { @class = "form-control" })
+            <div class="input-group-append">
+                <input type="submit" value="Search" class="btn btn-info" />
+            </div>
+        </div>
+
+    }
+</div>
+
+<div class="container">
+    <table class="table table-bordered mt-5">
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Job Card ID</th>
+                <th>Customer ID</th>
+                <th>Customer name</th>
+                <th>Address</th>
+                <th>Job Type</th>
+                <th>Number of days</th>
+                <th>Materials used</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @if (Model == null)
+            {
+                <div class="alert alert-danger" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert">
+                        x
+                    </button>
+                    @ViewBag.Message
+                </div>
+
+            }
+
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.cust_id</td>
+                        <td>@item.cust_name @item.cust_lastname</td>
+                        <td>@item.addressline1 @item.addressline2, @item.city, @item.postal</td>
+                        @if (item.type.Equals("JOB01"))
+                        {
+                            <td>Full Conversion</td>
+                        }
+                        else if (item.type.Equals("JOB02"))
+                        {
+                            <td>Semi Conversion</td>
+                        }
+                        else
+                        {
+                            <td>Floor Boarding</td>
+                        }
+                        <td>@item.num_days</td>
+                        <td>@item.materials</td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

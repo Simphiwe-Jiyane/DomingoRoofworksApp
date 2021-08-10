@@ -1,0 +1,76 @@
+﻿@model DomingoRoofworksApp.Models.JobTypeModel
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.HomeActive = "";
+    ViewBag.JobActive = "active";
+    ViewBag.InvoiceActive = "";
+    ViewBag.EmpActive = "";
+}
+
+@if (ViewBag.Bool == false)
+{
+    <div class="alert alert-danger" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert">
+            x
+        </button>
+        @ViewBag.Message
+    </div>
+}
+
+else if (ViewBag.Bool == true)
+{
+    <div class="alert alert-success" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" data-dismiss="alert">
+            x
+        </button>
+        @ViewBag.Message
+    </div>
+}
+
+<div class="container text-center mt-5">
+    <h2>Update job rate</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="container mt-5" style="margin-left:350px;">
+            <p>Select the job type you would like to update</p>
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.id, new List<SelectListItem> { new SelectListItem { Value = "none", Text = "Select an item" },
+                                                                                            new SelectListItem { Value = "JOB01", Text = "JOB01" },
+                                                                                            new SelectListItem { Value = "JOB02" , Text = "JOB02" },
+                                                                                            new SelectListItem { Value = "JOB03" , Text = "JOB03" }}, new { @class = "form-control" })
+                    @if (ViewBag.JobWrong == false)
+                    {
+                        <p class="text-danger">Please select a job type</p>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.rate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-outline-secondary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

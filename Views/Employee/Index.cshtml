@@ -1,0 +1,39 @@
+﻿
+
+@{
+    ViewBag.Title = "Employees";
+    ViewBag.HomeActive = "";
+    ViewBag.JobActive = "";
+    ViewBag.InvoiceActive = "";
+    ViewBag.EmpActive = "active";
+}
+
+    <div class="container rounded " style="margin-top:100px; border:1px solid #9932cc; height:300px;">
+
+        <div class="container">
+            <div class="row mt-5 mb-5 ml-5" style="margin-top:40px;">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Create a new employee</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Add", "AddEmployee", "Employee", new { @class = "btn my-btn" ,style="width:100px"})
+                </div>
+            </div>
+            <div class="row mt-5 mb-5 ml-5">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Search for an employee in the database</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Search", "FindEmployee", "Employee", new { @class = "btn my-btn ", style = "width:100px" })
+                </div>
+            </div>
+            <div class="row mt-5 mb-5 ml-5">
+                <div class="col-6">
+                    <h4 class="lead" style="font-size:28px;">Update an existing employee's details</h4>
+                </div>
+                <div class="col-6 text-center">
+                    @Html.ActionLink("Update", "UpdateEmployee", "Employee", new { @class = "btn my-btn ", style = "width:100px" })
+                </div>
+            </div>
+        </div>
+    </div>

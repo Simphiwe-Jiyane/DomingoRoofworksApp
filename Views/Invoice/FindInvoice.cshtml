@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DomingoRoofworksApp.Models.InvoiceModel>
+
+@{
+    ViewBag.Title = "Find Invoice";
+}
+
+
+
+<div class="container text-center mt-5">
+    <h2 class="display-4">Find an Invoice</h2>
+</div>
+
+
+<div class="container-fluid mt-5" style="padding-left:500px;">
+    @using (Html.BeginForm("FindInvoice", "Invoice", FormMethod.Get))
+    {
+
+        <div class="form-group">
+            <label class="lead" for="searching">Enter the invoice number to find an invoice</label>
+            <div class="input-group mb-5">
+                @Html.TextBox("searching", null, new { @class = "form-control" })
+                <div class="input-group-append">
+                    <input type="submit" value="Search" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+<div class="container">
+    <table class="table table-bordered mt-5">
+
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Invoice number</th>
+                <th>Customer ID</th>
+                <th>Job Card number</th>
+                <th>Daily rate</th>
+                <th>Number of days</th>
+                <th>Subtotal (Excluding VAT)</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model == null)
+            {
+
+                <div class="alert alert-danger" style="300px;" role="alert" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert">
+                        x
+                    </button>
+                    @ViewBag.Message
+                </div>
+
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.id </td>
+                        <td> @item.cust_id </td>
+                        <td> @item.job_card_id </td>
+                        <td> @item.rate </td>
+                        <td> @item.num_days </td>
+                        <td> R @item.subtotal </td>
+                        <td> R @item.total </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+

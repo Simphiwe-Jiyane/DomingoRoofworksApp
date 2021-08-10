@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Invoices";
+    ViewBag.HomeActive = "";
+    ViewBag.JobActive = "";
+    ViewBag.InvoiceActive = "active";
+    ViewBag.EmpActive = "";
+}
+
+<div class="container rounded " style="margin-top:100px; border:1px solid #9932cc; height:300px;">
+
+    <div class="container">
+        <div class="row mt-5 mb-5 ml-5" style="margin-top:40px;">
+            <div class="col-6">
+                <h4 class="lead" style="font-size:28px;">Create a new invoice</h4>
+            </div>
+            <div class="col-6 text-center">
+                @Html.ActionLink("Create", "CreateInvoice", "Invoice", new { @class = "btn my-btn " })
+            </div>
+        </div>
+        <div class="row mt-5 mb-5 ml-5">
+            <div class="col-6">
+                <h4 class="lead" style="font-size:28px;">Search for an existing invoice</h4>
+            </div>
+            <div class="col-6 text-center">
+                @Html.ActionLink("Search", "FindInvoice", "Invoice", new { @class = "btn my-btn " })
+            </div>
+        </div>
+    </div>
+</div>
+
